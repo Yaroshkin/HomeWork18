@@ -26,4 +26,33 @@ class Stack:
     def count(self):
         print(f"Кол-во строк в стеке {len(self.__li)}")
 
+    # ■ проверку пустой ли стек
+    def zero(self):
+        if self.__li == []:
+            print("Стек пустой ")
+        else:
+            print("Что-то есть ")
+
+    # ■ проверку полный ли стек
+    def full(self):
+        if self.__li != []:
+            print(f"Стек заполнен {self.__li}")
+        else:
+            print("Error")
     
+    # ■ очистку стека
+    def clean(self):
+        self.__li.clear()
+
+    # ■ получение значения без выталкивания верхней строки из стека.
+    def no_up(self):
+        print(self.__li[::-2])
+
+
+stack = Stack()
+stack.push(4)   
+stack.push(2)
+stack.push(3)
+# print(stack.clean())   
+print(stack.zero())
+print(stack.no_up())
