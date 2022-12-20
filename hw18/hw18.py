@@ -9,13 +9,20 @@
 # ■ получение значения без выталкивания верхней строки из стека. 
 # При старте приложения нужно отобразить меню с помощью, которого пользователь может выбрать необходимую операцию.
 
+n = int(input("Введите ограничение стека: "))
+
+
 class Stack:
-    def __init__(self):
+    def __init__(self, n):
         self.__li = []
+        self.n = n
 
     # ■ помещение строки в стек
     def push(self, value):
-        self.__li.append(value)
+        if len(self.__li) < self.n:
+            self.__li.append(value)
+        else:
+            print("Много ")
     
     # ■ выталкивание строки из стека
     def pop(self):
@@ -35,7 +42,7 @@ class Stack:
 
     # ■ проверку полный ли стек
     def full(self):
-        if self.__li != []:
+        if len(self.__li) == self.n :
             print(f"Стек заполнен {self.__li}")
         else:
             print("Error")
@@ -46,13 +53,40 @@ class Stack:
 
     # ■ получение значения без выталкивания верхней строки из стека.
     def no_up(self):
-        print(self.__li[::-2])
+        print(self.__li[-1])
+
+    def pr(self):
+        print(self.__li)
 
 
-stack = Stack()
-stack.push(4)   
-stack.push(2)
-stack.push(3)
+stack = Stack(n)
+# stack.push(4)   
+# stack.push(2)
+# stack.push(3)
+# stack.push(5)
 # print(stack.clean())   
-print(stack.zero())
-print(stack.no_up())
+# print(stack.zero())
+# print(stack.no_up())
+# print(stack.full())
+
+while True:
+    enter = str(input("Введите что сделать: a - добавление в стек, d - віталкивание, b - подсчет кол-ва строк,\n c - очистка стека, f - проверка полний , x - пустой, v - получение значения без выталкивания верхней строки из стека\n e - віход "))
+   
+    if enter == "c":
+        stack.clean()
+        print("Стек очищен ")
+    elif enter == 'a':
+        stack.push(input("Введите чем наполнить "))
+        print(stack.pr())
+    elif enter == 'd':
+        stack.pop()
+    elif enter == 'b':
+        stack.count()
+    elif enter == 'f':
+        stack.full()
+    elif enter == 'x':
+        stack.zero()
+    elif enter == 'v':
+        stack.no_up()
+    elif enter == 'e':
+        break
